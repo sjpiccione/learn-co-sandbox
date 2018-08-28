@@ -1,56 +1,58 @@
-// ======= data =======
-let students = {};
+document.addEventListener ("DOMContentLoaded", function() {
+  console.log("==  DOMContentLoaded  ==");
+  console.log("movie:", movies);
+  
+  let movieData
+  let titanicBtn = document.getElementById ("Titanic");
+  let terminator_2Btn = document.getElementById ("Terminator_2");
+  
+  titanicBtn.addEventListener('click', function(e) {
+    loadMovieData("Titanic");
+  })
+  terminator_2Btn.addEventListener('click', function(e) {
+    loadMovieData("Terminator_2");
+  })
 
-
-// ======= initialize =======
-function initialize() {
-  console.log("== initialize ==");
-
-  let titleEl = document.getElementById("mainTitle");
-  console.log("titleEl:", titleEl);
-  titleEl.innerText = "Hogwarts";
-  activateAllBtns();
+   function loadMovieData (whichMovie) {
+    console.log("==  loadMovieData  ==");
+    console.log("whichMovie:", whichMovie);
     
-}
-
-initialize();
-
-// // ======= activateAllBtns =======
-function activateAllBtns() {
-   console.log("== activateAllBtns ==");
+    if (whichMovie === "Titanic"){
+      console.log("--  Titanic  --");
+      movieData = movies.Titanic;
+    } else {
+      console.log("Terminator_2");
+      movieData = movies.Terminator_2;
+    }
+    console.log("movieData:", movieData);
+    let title = document.getElementById ("title");
+    title.innerHTML = movieData.title;
    
-  let buttonEl = document.getElementById("addStudentBtn");
-  console.log("buttonEl:", buttonEl);
-
-  buttonEl.addEventListener("click", verifyNewStudent);
-  
-  let profButtonEl = document.getElementById("addProfBtn");
-  console.log("profButtonEl:", profButtonEl);
-  
-  profButtonEl.addEventListener("click", function() {
-    console.log("-- profButtonEl.click --");
+    let cast = document.getElementById ("cast");
     
-  });  
+    let listHtml = "<ul>";
+    
+    for (let i = 0; i < movieData.cast.length; i++) {	
+     listHtml += "<li>" + movieData.cast[i].role  + "  _  " + movieData.cast[i].actor +"</li>";
+    }
+    
+    listHtml += "</ul>";
+    cast.innerHTML = listHtml;
+      
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+   }
    
-}
-
-function verifyNewStudent() {
-  console.log("== verifyNewStudent ==");
-  
-  let studentName = document.getElementById("studentEntry").value;
-  console.log("studentName:", studentName);
-  
-  if (studentName) {
-    console.log(" NAME found");
-    addNewStudent();
-  } else {
-    console.log(" NO NAME");
-  }
-  }
-  
-  function addNewStudent() {
-  console.log("== addNewStudent ==");
-  
-  console.log("students1:", students)
-
-}
+     
+  })
