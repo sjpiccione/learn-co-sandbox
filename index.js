@@ -1,3 +1,10 @@
-    fetch('http://api.open-notify.org/astros.json')
-      .then(response => response.json())
-      .then(json => document.write(`Holy cow! There are ${json["number"]} humans in space.`));
+fetch("http://api.open-notify.zrg/astros.json")
+      .then( resp => {
+        console.log("== then ==");
+        console.log("Yay")
+      })
+      .catch( error => {
+        console.log("== catch ==");
+        console.error(`Oh no! ${error}`)
+      });
+      
